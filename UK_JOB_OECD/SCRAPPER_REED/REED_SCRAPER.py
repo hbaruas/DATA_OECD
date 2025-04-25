@@ -9,7 +9,7 @@ import os
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # ✅ Your REED API Key here
-API_KEY = 'f28399a0-0590-48ad-b00c-3d5483f78c9d'
+API_KEY = ''
 
 # Constants
 BASE_URL = 'https://www.reed.co.uk/api/1.0/search'
