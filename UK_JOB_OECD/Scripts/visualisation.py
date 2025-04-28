@@ -358,3 +358,51 @@ table.scale(1.2, 1.2)
 plt.title("Sector-level Summary Table")
 pdf.savefig()
 plt.close()
+
+
+
+
+
+
+
+# Production Replacement Explanation - Page 1
+fig, ax = plt.subplots(figsize=(10, 10))
+ax.axis('off')
+text_page1 = (
+    "Replacing Dummy Data for Production Use\n\n"
+    "In this MVP, some synthetic datasets were created to simulate missing inputs. For production, all synthetic elements can be replaced with real data from official sources.\n\n"
+    "1. SOC Code Assignment (Job Classification)\n"
+    "    • In production, use the UK's 'Online Job Adverts' dataset (ONS).\n"
+    "    • It already classifies job adverts into SOC 2-digit and SOC 4-digit codes.\n"
+    "    • This ensures high accuracy without manual rules.\n\n"
+    "2. SOC to Sector Mapping\n"
+    "    • In the MVP, SOC codes were manually mapped to sectors.\n"
+    "    • In production, official concordance tables between SOC and SIC codes should be used.\n"
+    "    • Available from ONS Concordances and NOMIS SOC-SIC mappings.\n"
+)
+ax.text(0.02, 0.98, text_page1, va='top', wrap=True)
+pdf.savefig()
+plt.close()
+
+
+
+# Production Replacement Explanation - Page 2
+fig, ax = plt.subplots(figsize=(10, 10))
+ax.axis('off')
+text_page2 = (
+    "3. Sector GVA and Investment Values\n"
+    "    • In the MVP, GVA and Investment figures were randomly generated.\n"
+    "    • In production, sector-level GVA and Investment data can be sourced from:\n"
+    "        - ONS Supply and Use Tables (SUT)\n"
+    "        - UK National Accounts: The Blue Book\n"
+    "        - ONS Regional Economic Activity data.\n\n"
+    "4. Data Activity Counts (Methodology)\n"
+    "    • The method for detecting data-related tasks using NLP and semantic matching remains valid.\n"
+    "    • Only the underlying dataset will change — no major methodological adjustment needed.\n\n"
+    "Summary\n"
+    "    • Replacing the synthetic SOC codes, sector mappings, and economic values with official datasets allows the project to scale seamlessly.\n"
+    "    • The pipeline is production-ready once these inputs are switched to real official sources.\n"
+)
+ax.text(0.02, 0.98, text_page2, va='top', wrap=True)
+pdf.savefig()
+plt.close()
