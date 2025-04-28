@@ -290,3 +290,43 @@ text = (
 ax.text(0.05, 0.95, text, va='top', wrap=True)
 pdf.savefig()
 plt.close()
+
+
+
+
+
+# Additional Full Explanation: How Data-Related Task Counts Were Created
+fig, ax = plt.subplots(figsize=(10, 8))
+ax.axis('off')
+text = (
+    "1. What are 'noun chunks' in this project?\\n\\n"
+    "    • A noun chunk is a small, meaningful group of words extracted from a sentence, centered around a noun.\\n"
+    "    • Example from a job description:\\n"
+    "        Sentence: 'Experience with SQL databases is essential.'\\n"
+    "        Noun chunks detected: 'Experience', 'SQL databases'.\\n"
+    "    • We used an NLP tool called SpaCy to automatically extract noun chunks.\\n"
+    "⸻\\n\\n"
+    "2. How did we find 'data-related' noun chunks?\\n\\n"
+    "    • After extracting noun chunks, we compared each to the word 'data' using cosine similarity.\\n"
+    "    • Cosine similarity checks if two ideas are close in meaning, even if the words are different.\\n"
+    "    • Examples:\\n"
+    "        Noun chunk: 'SQL databases' → Similar to 'data' → kept.\\n"
+    "        Noun chunk: 'cafeteria manager' → Not similar → ignored.\\n"
+    "⸻\\n\\n"
+    "3. Classification into Categories\\n\\n"
+    "    • Each kept noun chunk was categorized into one of three types:\\n"
+    "        - data_entry (e.g., admin tasks like 'data input', 'typing records')\\n"
+    "        - database (e.g., tech infrastructure like 'SQL server', 'data warehouse')\\n"
+    "        - data_analytics (e.g., analyzing information like 'predictive analytics')\\n"
+    "⸻\\n\\n"
+    "4. Counting and Aggregating the Data Tasks\\n\\n"
+    "    • For each job advert, we counted how many noun chunks fell into each category.\\n"
+    "    • Aggregation steps:\\n"
+    "        - Per Job: Count noun chunks for each job_id.\\n"
+    "        - Per SOC Code: Group all jobs sharing the same SOC and sum their data-related task counts.\\n"
+    "        - Per Sector: Map SOC codes to sectors and sum task counts across each sector.\\n"
+    "    • This provides a structured, numeric view of data intensity at job, occupation, and sector levels.\\n"
+)
+ax.text(0.05, 0.95, text, va='top', wrap=True)
+pdf.savefig()
+plt.close()
