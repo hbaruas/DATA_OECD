@@ -330,3 +330,31 @@ text = (
 ax.text(0.05, 0.95, text, va='top', wrap=True)
 pdf.savefig()
 plt.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Chart 4: Table - Full Sector Summary
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.axis('off')
+formatted_df = df.copy()
+formatted_df['share_of_GVA'] = formatted_df['share_of_GVA'].apply(lambda x: f"{x:.2e}")  # Scientific notation
+table = ax.table(cellText=formatted_df.values,
+                 colLabels=formatted_df.columns,
+                 loc='center')
+table.auto_set_font_size(False)
+table.set_fontsize(8)
+table.scale(1.2, 1.2)
+plt.title("Sector-level Summary Table")
+pdf.savefig()
+plt.close()
