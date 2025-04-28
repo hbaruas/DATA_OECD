@@ -243,3 +243,44 @@ plt.close()
 pdf.close()
 
 print(f"✅ PDF report generated and saved to:\n{pdf_path}")
+
+
+
+
+
+
+
+# Additional Full Explanation: How Data-Related Task Counts Were Created
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.axis('off')
+text = (
+    "How Data-Related Task Counts Were Created from Job Advertisements\\n\\n"
+    "Understanding data-related activity inside job adverts is not as simple as looking for the word 'data'.\\n"
+    "Instead, we used a structured, intelligent process to detect meaningful activities about handling, storing, or analyzing information.\\n\\n"
+    "Step 1: Reading job descriptions automatically\\n"
+    "- We used a natural language processing (NLP) technique called 'noun chunking' to read each job description.\\n"
+    "- A noun chunk is a small group of words centered around a noun, like 'data analysis', 'SQL server', or 'business reports'.\\n\\n"
+    "Step 2: Checking for data relevance\\n"
+    "- Each noun chunk was compared to the concept of 'data' using semantic similarity (cosine similarity).\\n"
+    "- If the phrase was meaningfully related to data work, it was kept.\\n"
+    "- This allowed us to capture a wider range of phrases than simple keyword matching (e.g., 'customer database', 'predictive modeling').\\n\\n"
+    "Step 3: Classifying into types of data work\\n"
+    "- The kept noun chunks were classified into three broad types:\\n"
+    "  • data_entry: routine tasks like entering information, processing forms, handling spreadsheets.\\n"
+    "  • database: tasks related to organizing or maintaining structured information systems, like SQL, data warehouses.\\n"
+    "  • data_analytics: tasks focused on making sense of information, finding patterns, using statistics or machine learning.\\n\\n"
+    "Step 4: Counting the activities\\n"
+    "- We counted how many times each type of data work appeared per job advert.\\n"
+    "- These counts were then summed across occupations (SOC codes) and sectors.\\n"
+    "- This gave us a numeric way to measure how 'data-heavy' different jobs and industries are.\\n\\n"
+    "What this represents\\n"
+    "- The counts are a proxy for real-world data work expected from jobseekers.\\n"
+    "- Instead of relying on job titles (which can be misleading), this method measures the actual content of job tasks.\\n"
+    "- Sectors with higher counts are more deeply embedded with data responsibilities across their workforce.\\n\\n"
+    "Important:\\n"
+    "- No manual labeling was done — the system automatically detected, scored, and classified thousands of job descriptions without human bias.\\n"
+    "- The counts were later used to create sector-level indicators like Alpha (data activity per £ invested) and Share of GVA (economic importance of data work).\\n"
+)
+ax.text(0.05, 0.95, text, va='top', wrap=True)
+pdf.savefig()
+plt.close()
